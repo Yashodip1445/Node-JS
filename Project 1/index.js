@@ -19,34 +19,33 @@ app.get("/users", (req, res) => {
 // // API Route (JSON)
 
 
-// app.get("/api/users", (req, res) => {
-//   return res.json(users);
-// });
+app.get("/api/users", (req, res) => {
+  return res.json(users);
+});
 
-// 
 
-// app.get("/api/users/:id", (req, res) => {
-//   const id = Number(req.params.id);
-//   const user = users.find((user) => user.id === id);
 
-//     return res.json(user);
-// });
+app.get("/api/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const user = users.find((user) => user.id === id);
 
-app.route("/api/users/:id")
-  .get((req, res) => {
-    const id = Number(req.params.id);
-    const user = users.find((user) => user.id === id);
-    if (!user) return res.status(404).json({ error: "User not found" });
     return res.json(user);
-  })
-  .patch((req, res) => {
-    // Edit user with given id
-    return res.json({ status: "Pending", message: "User updated" });
-  })
-  .delete((req, res) => {
-    // Delete user with given id
-    return res.json({ status: "Pending", message: "User deleted" });
-  });
+});
+
+// app.route("/api/users/:id")
+//   .get((req, res) => {
+//     const id = Number(req.params.id);
+//     const user = users.find((user) => user.id === id);
+//     return res.json(user);
+//   })
+//   .patch((req, res) => {
+//     // Edit user with given id
+//     return res.json({ status: "Pending", message: "User updated" });
+//   })
+//   .delete((req, res) => {
+//     // Delete user with given id
+//     return res.json({ status: "Pending", message: "User deleted" });
+//   });
 
 
 app.listen(PORT, () => {
